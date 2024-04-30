@@ -9,14 +9,21 @@ namespace ProAtividade.API.Models
         public int Id {get;set;}
         public string Titulo {get;set;}
         public string Descricao {get;set;}
-        public string Prioridade {get;set;}
+        public Prioridade Prioridade {get;set;}
         public Atividade()
         {
+            Id = 0;
+            Titulo = string.Empty;
+            Descricao = string.Empty;
+            Prioridade = Prioridade.NaoDefinido;
             
         }
         public Atividade(int id)
         {
             Id = id;
+            Titulo = string.Empty;
+            Descricao = string.Empty;
+            Prioridade = Prioridade.NaoDefinido;
         }
 
         
