@@ -3,15 +3,17 @@ import Atividade from './Atividade';
 
 export default function AtividadeLista(props) {
   return (
-    <div className= "container mt-3 ">
-        {props.atividades.map(ativ => (
+    <div className="container mt-3 ">
+      {props.atividades.map(ativ => (
 
-          <Atividade key={ativ.id}
+        <Atividade
+          key={ativ.id}
           ativ={ativ}
           deleteAtividade={props.deleteAtividade}
           editAtividade={props.editAtividade}
-          />
-        ))}
-      </div>
+          handleConfirmModal={props.handleConfirmModal}
+        />
+      ))}
+    </div>
   )
 }

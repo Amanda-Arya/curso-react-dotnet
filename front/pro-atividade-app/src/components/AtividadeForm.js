@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Button } from 'react-bootstrap';
 
 const ativInicial = {
   id: 0,
@@ -15,7 +14,7 @@ export default function AtividadeForm(props) {
   useEffect(() => {
     if (props.ativSelecionada.id !== 0) {
       setAtividade(props.ativSelecionada);
-      
+
     }
   }, [props.ativSelecionada]);
 
@@ -44,11 +43,10 @@ export default function AtividadeForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(props.ativSelecionada.id !== 0)
-    {
+    if (props.ativSelecionada.id !== 0) {
       props.atualizarAtividade(atividade);
     }
-    else{
+    else {
       props.addAtividade(atividade);
     }
     setAtividade(ativInicial);
@@ -56,7 +54,6 @@ export default function AtividadeForm(props) {
 
   return (
     <>
-      <h1>Atividade {atividade.id !== 0 ? atividade.id : ''}</h1>
       <form className="container row g-3" onSubmit={handleSubmit}>
 
         <div className="col-md-6">
@@ -79,10 +76,10 @@ export default function AtividadeForm(props) {
             onChange={inputTextHandler}
             value={atividade.prioridade}
           >
-            <option value="0">Selecione...</option>
-            <option value="1">Baixa</option>
-            <option value="2">Média</option>
-            <option value="3">Alta</option>
+            <option value="Não Definido">Selecione...</option>
+            <option value="Baixa">Baixa</option>
+            <option value="Normal">Normal</option>
+            <option value="Alta">Alta</option>
           </select>
         </div>
         <div className="col-md-12">
@@ -99,13 +96,9 @@ export default function AtividadeForm(props) {
         <hr />
         <div className="col-12 mt-0">
           {atividade.id === 0 ? (
-
-            <button className="btn btn-outline-secondary"
-              type='submit'>
-                <FontAwesomeIcon icon={faPlus} className='me-2' />
-              Atividade
-
-            </button>
+              <Button variant="outline-success" onClick={handleSubmit}>
+                Salvar
+              </Button>
           ) : (
             <>
               <button
